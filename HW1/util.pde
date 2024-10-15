@@ -17,7 +17,7 @@ public void CGLine(float x1, float y1, float x2, float y2) {
     
     float dx = x2 - x1;
     float dy = y2 - y1;
-    float steps = max(abs(dx),abs(dy)) * 50;
+    float steps = 20000;
 
     float x = x1;
     float y = y1;
@@ -43,6 +43,16 @@ public void CGCircle(float x, float y, float r) {
     noFill();
     circle(x,y,r*2);
     */
+    
+    float theta, cx, cy;
+
+    int steps = 20000;
+    for (int i = 0; i < steps; i++){
+        theta = map(i, 0, steps, 0, TWO_PI);
+        cx = x + r * cos(theta);
+        cy = y + r * sin(theta);
+        drawPoint(cx,cy,color(0,0,0)); 
+    }
 }
 
 public void CGEllipse(float x, float y, float r1, float r2) {
