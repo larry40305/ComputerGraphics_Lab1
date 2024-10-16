@@ -69,6 +69,17 @@ public void CGEllipse(float x, float y, float r1, float r2) {
     noFill();
     ellipse(x,y,r1*2,r2*2);
     */
+    
+    float theta, cx, cy;
+
+    int steps = 20000;
+    for (int i = 0; i < steps; i++){
+        theta = map(i, 0, steps, 0, TWO_PI);
+        cx = x + r1 * cos(theta);
+        cy = y + r2 * sin(theta);
+        drawPoint(cx,cy,color(0,0,0)); 
+    }
+
 
 }
 
@@ -82,11 +93,12 @@ public void CGCurve(Vector3 p1, Vector3 p2, Vector3 p3, Vector3 p4) {
     // Utilize the function drawPoint(x, y, color) to apply color to the pixel at
     // coordinates (x, y).
 
-    /*
+    
     stroke(0);
     noFill();
     bezier(p1.x,p1.y,p2.x,p2.y,p3.x,p3.y,p4.x,p4.y);
-    */
+    
+    
 }
 
 public void CGEraser(Vector3 p1, Vector3 p2) {
