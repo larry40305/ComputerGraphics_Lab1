@@ -93,11 +93,19 @@ public void CGCurve(Vector3 p1, Vector3 p2, Vector3 p3, Vector3 p4) {
     // Utilize the function drawPoint(x, y, color) to apply color to the pixel at
     // coordinates (x, y).
 
-    
+    /*
     stroke(0);
     noFill();
     bezier(p1.x,p1.y,p2.x,p2.y,p3.x,p3.y,p4.x,p4.y);
-    
+    */
+
+    float x,y;
+
+    for(float t = 0; t < 1; t=t+0.00005){
+        x = (1-t)*(1-t)*(1-t)*p1.x + 3*(1-t)*(1-t)*t*p2.x + 3*(1-t)*t*t*p3.x + t*t*t*p4.x;
+        y = (1-t)*(1-t)*(1-t)*p1.y + 3*(1-t)*(1-t)*t*p2.y + 3*(1-t)*t*t*p3.y + t*t*t*p4.y;
+        drawPoint(x,y,color(0,0,0));
+    }
     
 }
 
@@ -113,6 +121,23 @@ public void CGEraser(Vector3 p1, Vector3 p2) {
     // You can use the mouse wheel to change the eraser range.
     // Utilize the function drawPoint(x, y, color) to apply color to the pixel at
     // coordinates (x, y).
+    
+    
+    float dx = p2.x - p1.x;
+    float dy = p2.y - p1.y;
+    float steps = 50;
+
+    float x = p1.x;
+    float y = p1.y;
+
+    for(int i = 0; i <= steps; i++){
+        for(int j=0; j <= steps; j++){
+            drawPoint(x,y,color(250));
+            y += dy / steps;
+        }
+        x += dx / steps;
+        y = p1.y;
+    }
 
 }
 
